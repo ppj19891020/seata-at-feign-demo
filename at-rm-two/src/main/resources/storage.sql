@@ -7,4 +7,6 @@ CREATE TABLE `storage` (
   `used` int(11) DEFAULT NULL COMMENT '已用库存',
   `residue` int(11) DEFAULT NULL COMMENT '剩余库存',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+INSERT INTO `seata-storage`.`storage`(`id`, `product_id`, `total`, `used`, `residue`) VALUES (1, 1, 100, 0, 100);

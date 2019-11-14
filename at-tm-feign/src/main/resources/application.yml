@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: seata-at-tm-feign
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
 
 eureka:
   client:

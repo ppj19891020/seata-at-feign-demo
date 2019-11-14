@@ -9,6 +9,10 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   application:
     name: seata-at-rm-two
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
 
 eureka:
   client:

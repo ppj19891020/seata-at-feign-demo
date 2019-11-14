@@ -3,6 +3,8 @@ package com.fly.seata.controller;
 import com.fly.seata.common.api.OrderApi;
 import com.fly.seata.common.api.StorageApi;
 import com.fly.seata.common.dto.OrderDTO;
+import io.seata.spring.annotation.GlobalLock;
+import io.seata.spring.annotation.GlobalTransactional;
 import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,8 @@ public class TmController {
   @Autowired
   private StorageApi storageApi;
 
+  @GlobalLock
+  @GlobalTransactional
   @GetMapping("/tm/purchase")
   public String purchase(){
     OrderDTO order = new OrderDTO();
