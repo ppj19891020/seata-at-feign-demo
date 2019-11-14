@@ -5,7 +5,8 @@ AT模式是 Seata 主推的分布式事务解决方案,它使得应用代码可�
 - AT模式需借助全局锁和GlobalLock注解来解决全局事务间的写冲突问题，如果一阶段分支事物成功则二阶段一开始全局锁即被释放，否则需要等到分支事务二阶段回滚完成才能释放全局锁；
 
 ### seata AT工作流程
-<img width=500px src="https://raw.githubusercontent.com/ppj19891020/pictures/master/seata/1.jpg"/>
+
+![seata AT工作流程](https://raw.githubusercontent.com/ppj19891020/pictures/master/seata/1.jpg "seata AT工作流程")
 
 概括来讲，AT 模式的工作流程分为两阶段。一阶段进行业务 SQL 执行，并通过 SQL 拦截、SQL 改写等过程生成修改数据前后的快照（Image），并作为 UndoLog 和业务修改在同一个本地事务中提交。
 
