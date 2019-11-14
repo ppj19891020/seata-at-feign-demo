@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>at-demo</artifactId>
+    <groupId>com.seata</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>at-common-api</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.seata</groupId>
+      <artifactId>seata-all</artifactId>
+    </dependency>
+
+    <!-- 主要使用其中的SpringMVC相关技术。将请求的URL和服务的方法耦合到一起。 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- feign启动器。封装了所有的feign相关资源的jar包。提供的是默认环境。
+      feign技术在请求远程服务的时候，依托于http协议。
+      默认底层使用JDK提供的HttpUrlConnection来实现http远程访问的。
+      httpurlconnection技术不支持http连接池。所以效率上较低。
+    -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
