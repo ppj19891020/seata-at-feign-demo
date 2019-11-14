@@ -17,7 +17,7 @@ public interface OrderDao {
    * 插入订单
    * @param order
    */
-  @Insert("INSERT INTO `order`(`user_id`, `product_id`, `count`, `money`, `status`) VALUES (#{userId},#{productId},#{count},#{money},0)")
+  @Insert({"INSERT INTO `order`(`user_id`, `product_id`, `count`, `money`) VALUES (#{userId},#{productId},#{count},#{money})"})
   void insert(Order order);
 
 }

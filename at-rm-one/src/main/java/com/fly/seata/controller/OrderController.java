@@ -22,8 +22,8 @@ public class OrderController {
   @PostMapping(value = "/order/create",consumes = MediaType.APPLICATION_JSON_VALUE)
   public String createOrder(@RequestBody Order order){
     orderService.createOrder(order);
-    throw new RuntimeException("模拟抛出异常");
-//    return "ok";
+//    throw new RuntimeException("模拟抛出异常");
+    return "ok";
   }
 
 }
