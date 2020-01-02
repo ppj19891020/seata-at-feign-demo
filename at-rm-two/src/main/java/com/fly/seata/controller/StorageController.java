@@ -1,6 +1,7 @@
 package com.fly.seata.controller;
 
 import com.fly.seata.service.StorageService;
+import io.seata.spring.annotation.GlobalLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,10 @@ public class StorageController {
 
   @GetMapping(value = "/storage/reduce/{productId}/{count}")
   public String reduce(@PathVariable("productId") long productId,@PathVariable("count") Integer count){
-    storageService.reduce(productId,count);
+    int result = storageService.reduce(productId,count);
+    if(result <= 0){
+        throw new RuntimeException("库存扣减失败！！！");
+    }
     return "ok";
   }
 

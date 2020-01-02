@@ -12,17 +12,11 @@
   <artifactId>at-tm-feign</artifactId>
 
   <dependencies>
-    <dependency>
-      <groupId>io.seata</groupId>
-      <artifactId>seata-all</artifactId>
-    </dependency>
-
     <!-- 客户端依赖 -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
-
 
     <!-- 主要使用其中的SpringMVC相关技术。将请求的URL和服务的方法耦合到一起。 -->
     <dependency>
@@ -46,4 +40,16 @@
       <version>${project.version}</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

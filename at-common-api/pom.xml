@@ -12,11 +12,6 @@
   <artifactId>at-common-api</artifactId>
 
   <dependencies>
-    <dependency>
-      <groupId>io.seata</groupId>
-      <artifactId>seata-all</artifactId>
-    </dependency>
-
     <!-- 主要使用其中的SpringMVC相关技术。将请求的URL和服务的方法耦合到一起。 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
