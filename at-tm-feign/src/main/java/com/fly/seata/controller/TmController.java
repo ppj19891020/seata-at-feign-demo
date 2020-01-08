@@ -4,6 +4,7 @@ import com.fly.seata.common.api.OrderApi;
 import com.fly.seata.common.api.StorageApi;
 import com.fly.seata.common.dto.OrderDTO;
 import io.seata.spring.annotation.GlobalTransactional;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,14 +26,22 @@ public class TmController {
 
   @GlobalTransactional
   @PostMapping("/tm/purchase")
-  public String purchase(@RequestBody OrderDTO orderDTO){
+  public String purchase(HttpServletRequest request,@RequestBody OrderDTO orderDTO){
 //    OrderDTO order = new OrderDTO();
 //    order.setProductId(1l);
 //    order.setCount(1);
 //    order.setMoney(new BigDecimal(1));
 //    order.setUserId(1l);
     orderApi.createOrder(orderDTO);
-    storageApi.reduce(orderDTO.getProductId(),orderDTO.getCount());
+
+    String type = request.getHeader("type");
+    if(null !=type && type.equalsIgnoreCase("hot")){
+      //更新操作-热点数据测试
+      storageApi.reduce(orderDTO.getProductId(),orderDTO.getCount());
+    }else{
+      //插入操作-非热点数据
+      storageApi.save();
+    }
     return "ok";
   }
 
