@@ -29,7 +29,7 @@ seata:
   tx-service-group: my_test_tx_group # 事务群组（可以每个应用独立取名，也可以使用相同的名字）
   enable-auto-data-source-proxy : false
   client:
-    rm-report-success-enable: true
+    rm-report-success-enable: false
     rm-table-meta-check-enable: false # 自动刷新缓存中的表结构（默认false）
     rm-report-retry-count: 5 # 一阶段结果上报TC重试次数（默认5）
     rm-async-commit-buffer-limit: 10000 # 异步提交缓存队列长度（默认10000）
