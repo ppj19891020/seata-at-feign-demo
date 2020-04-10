@@ -72,8 +72,9 @@ seata:
     compressor: none
     enable-client-batch-send-request: true # 客户端事务消息请求是否批量合并发送（默认true）
   registry:
-    type: eureka
-    eureka:
-      service-url: http://192.168.202.137:8761/eureka
-      application: seata-server-ha-defult
-      weight: 1
+    type: zk
+    zk:
+      cluster: seata-server-ha-defult
+      server-addr: zk1.host.dxy:2181
+      session-timeout: 6000
+      connect-timeout: 5000
