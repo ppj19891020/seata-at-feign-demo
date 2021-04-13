@@ -28,19 +28,19 @@
     <mybatis-spring-boot-starter.version>2.0.0</mybatis-spring-boot-starter.version>
     <druid-spring-boot-starter.version>1.1.13</druid-spring-boot-starter.version>
     <lombok.version>1.18.8</lombok.version>
-    <seata.version>1.2.0-SNAPSHOT</seata.version>
+    <seata.version>1.4.1-SNAPSHOT</seata.version>
     <alibaba-seata.version>2.2.0.RELEASE</alibaba-seata.version>
   </properties>
 
   <dependencies>
     <!--seata-->
     <dependency>
-      <groupId>io.seata</groupId>
+      <groupId>com.dxy.middleware</groupId>
       <artifactId>seata-all</artifactId>
       <version>${seata.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.seata</groupId>
+      <groupId>com.dxy.middleware</groupId>
       <artifactId>seata-spring-boot-starter</artifactId>
       <version>${seata.version}</version>
     </dependency>
@@ -48,6 +48,12 @@
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
       <version>${alibaba-seata.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>io.seata</groupId>
+          <artifactId>seata-spring-boot-starter</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.101tec</groupId>
