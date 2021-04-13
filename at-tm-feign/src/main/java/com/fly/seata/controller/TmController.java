@@ -24,16 +24,36 @@ public class TmController {
   @Autowired
   private StorageApi storageApi;
 
+  /**
+   * 使用分布式事物测试
+   * @param request
+   * @param orderDTO
+   * @return
+   */
   @GlobalTransactional
-  @PostMapping("/tm/purchase")
+  @PostMapping("/seata/tm/purchase")
   public String purchase(HttpServletRequest request,@RequestBody OrderDTO orderDTO){
-//    OrderDTO order = new OrderDTO();
-//    order.setProductId(1l);
-//    order.setCount(1);
-//    order.setMoney(new BigDecimal(1));
-//    order.setUserId(1l);
     orderApi.createOrder(orderDTO);
+    String type = request.getHeader("type");
+    if(null !=type && type.equalsIgnoreCase("hot")){
+      //更新操作-热点数据测试
+      storageApi.reduce(orderDTO.getProductId(),orderDTO.getCount());
+    }else{
+      //插入操作-非热点数据
+      storageApi.save();
+    }
+    return "ok";
+  }
 
+  /**
+   * 未使用分布式事物测试
+   * @param request
+   * @param orderDTO
+   * @return
+   */
+  @PostMapping("/normal/tm/purchase")
+  public String normalPurchase(HttpServletRequest request,@RequestBody OrderDTO orderDTO){
+    orderApi.createOrder(orderDTO);
     String type = request.getHeader("type");
     if(null !=type && type.equalsIgnoreCase("hot")){
       //更新操作-热点数据测试
