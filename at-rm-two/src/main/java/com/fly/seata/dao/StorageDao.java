@@ -22,7 +22,7 @@ public interface StorageDao {
    * @param count
    * @return
    */
-  @Update("update storage set used = used + #{count},residue = residue - #{count} where id = #{productId} and residue > 0")
+  @Update("update storage set used = used + #{count},residue = residue - #{count} where product_id = #{productId} and residue > 0")
   int reduce(@Param("productId") Long productId,@Param("count") Integer count);
 
   /**
