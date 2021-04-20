@@ -48,9 +48,9 @@ public class DatasourceAutoConfig {
    * @return
    */
   public DruidDataSource commonConfigurete(DruidDataSource dataSource){
-    dataSource.setInitialSize(10);
-    dataSource.setMinIdle(10);
-    dataSource.setMaxActive(100);
+    dataSource.setInitialSize(30);
+    dataSource.setMinIdle(30);
+    dataSource.setMaxActive(30);
     //配置间隔多久启动一次DestroyThread，对连接池内的连接才进行一次检测，
     // 单位是毫秒。检测时:1.如果连接空闲并且超过minIdle以外的连接，如果空闲时间超过minEvictableIdleTimeMillis设置的值则直接物理关闭。2.在minIdle以内的不处理。
     dataSource.setTimeBetweenEvictionRunsMillis(60000);
