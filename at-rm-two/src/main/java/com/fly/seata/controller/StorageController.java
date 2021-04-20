@@ -23,7 +23,7 @@ public class StorageController {
   public String reduce(@PathVariable("productId") long productId,@PathVariable("count") Integer count){
     int result = storageService.reduce(productId,count);
     //测试库存只有10个子库存，区分热点数据和非热点数据
-    if(productId<=10 && result <= 0){
+    if(result <= 0){
         throw new RuntimeException("库存扣减失败！！！");
     }
     return "ok";

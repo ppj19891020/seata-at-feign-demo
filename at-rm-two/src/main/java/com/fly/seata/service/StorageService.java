@@ -5,6 +5,7 @@ import com.fly.seata.domain.Storage;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author: peijiepang
@@ -17,6 +18,7 @@ public class StorageService {
   @Autowired
   private StorageDao storageDao;
 
+  @Transactional
   public int reduce(long productId,int count){
     return storageDao.reduce(productId,count);
   }
