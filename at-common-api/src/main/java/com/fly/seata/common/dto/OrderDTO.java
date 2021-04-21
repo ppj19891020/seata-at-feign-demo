@@ -14,6 +14,8 @@ public class OrderDTO {
    */
   private Long id;
 
+  private String orderNo;
+
   /**
    * 用户id
    */
@@ -40,6 +42,14 @@ public class OrderDTO {
    * 1：已完成
    */
   private Integer status;
+
+  public String getOrderNo() {
+    return orderNo;
+  }
+
+  public void setOrderNo(String orderNo) {
+    this.orderNo = orderNo;
+  }
 
   public Long getId() {
     return id;

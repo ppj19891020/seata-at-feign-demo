@@ -23,8 +23,9 @@ public class StorageService {
     return storageDao.reduce(productId,count);
   }
 
-  public  int insert(){
-    return storageDao.insert();
+  @Transactional
+  public  int insert(String xid){
+    return storageDao.insert(xid);
   }
 
   public List<Storage> findByStorageByProductId(Long productId){

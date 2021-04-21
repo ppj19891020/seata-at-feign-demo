@@ -10,6 +10,9 @@ import java.math.BigDecimal;
  */
 public class Order {
 
+  private String orderNo;
+
+
   /**
    * 主键id
    */
@@ -41,6 +44,15 @@ public class Order {
    * 1：已完成
    */
   private Integer status;
+
+
+  public String getOrderNo() {
+    return orderNo;
+  }
+
+  public void setOrderNo(String orderNo) {
+    this.orderNo = orderNo;
+  }
 
   public Long getId() {
     return id;

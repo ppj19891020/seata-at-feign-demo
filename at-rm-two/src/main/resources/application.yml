@@ -77,3 +77,7 @@ seata:
       application: seata-server
       service-url: http://192.168.202.137:8761/eureka
       weight: 1
+
+server:
+  tomcat:
+    max-threads: 500

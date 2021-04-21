@@ -19,6 +19,6 @@ public interface StorageApi {
   @GetMapping(value = "/storage/reduce/{productId}/{count}")
   String reduce(@PathVariable("productId") long productId,@PathVariable("count") Integer count);
 
-  @GetMapping(value = "/storage/save")
-  int save();
+  @GetMapping(value = "/storage/save/{xid}")
+  int save(@PathVariable("xid") String xid);
 }

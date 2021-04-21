@@ -29,8 +29,8 @@ public interface StorageDao {
    * 插入库存
    * @return
    */
-  @Insert("INSERT INTO `storage`(`product_id`, `total`, `used`, `residue`) VALUES (1000, 1000000, 0, 1000000)")
-  int insert();
+  @Insert("INSERT INTO `storage`(`product_id`, `total`, `used`, `residue`, `xid`) VALUES (1000, 1000000, 0, 1000000, #{xid})")
+  int insert(@Param("xid") String xid);
 
   /**
    * 通过商品id获取商品信息

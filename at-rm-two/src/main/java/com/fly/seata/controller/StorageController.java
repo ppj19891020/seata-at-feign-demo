@@ -2,6 +2,7 @@ package com.fly.seata.controller;
 
 import com.fly.seata.domain.Storage;
 import com.fly.seata.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ public class StorageController {
   @Autowired
   private StorageService storageService;
 
+  @GlobalTransactional(lockRetryInternal = 10,lockRetryTimes = 30)
   @GetMapping(value = "/storage/reduce/{productId}/{count}")
   public String reduce(@PathVariable("productId") long productId,@PathVariable("count") Integer count){
     int result = storageService.reduce(productId,count);
@@ -33,9 +35,9 @@ public class StorageController {
    * 获取库存信息
    * @return
    */
-  @GetMapping(value = "/storage/save")
-  public int save(){
-      return storageService.insert();
+  @GetMapping(value = "/storage/save/{xid}")
+  public int save(@PathVariable("xid") String xid){
+      return storageService.insert(xid);
   }
 
 }
