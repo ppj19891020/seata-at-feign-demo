@@ -20,7 +20,6 @@ public class StorageController {
   @Autowired
   private StorageService storageService;
 
-  @GlobalTransactional(lockRetryInternal = 10,lockRetryTimes = 30)
   @GetMapping(value = "/storage/reduce/{productId}/{count}")
   public String reduce(@PathVariable("productId") long productId,@PathVariable("count") Integer count){
     int result = storageService.reduce(productId,count);

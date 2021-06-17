@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    inetutils:
+      ignoredInterfaces: //匹配正则表达式忽略
+        - docker0
+        - veth.*
